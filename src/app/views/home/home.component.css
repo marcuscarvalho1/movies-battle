@@ -1,0 +1,54 @@
+span {
+    margin-left: 20px;
+}
+
+.filme-foto{
+    width: 300px;
+}
+
+.filme1-layer{
+    position: fixed;
+    height: 500px;
+    width: 100%;
+    margin-top: 180px;
+    padding: 1em;
+    background: #FFFFFF;
+    top: 0;
+    left: -90%;
+    transition: left 0.5s ease-in-out;
+    z-index: 1;
+    background-color: #727272;
+    color: #FFFFFF;
+}
+
+.filme2-layer{
+    position: fixed;
+    height: 500px;
+    width: 100%;
+    margin-top: 180px;
+    padding: 1em;
+    background: #FFFFFF;
+    top: 0;
+    right: -90%;
+    transition: right 0.5s ease-in-out;
+    z-index: 1;
+    background-color: #727272;
+    color: #FFFFFF;
+}
+
+.active-layer .filme1-layer{
+    left: 10%;
+}
+
+.active-layer .filme2-layer{
+    right: 15%;
+}
+
+.active-layer .overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+}
