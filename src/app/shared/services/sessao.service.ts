@@ -21,7 +21,11 @@ export class SessaoService {
         private httpClient: HttpClient
     ) { }
 
-    public consultaSessao(idUsuario: number): Observable<Sessao>{
+    public consultaSessao(idUsuario: string): Observable<Sessao>{
         return this.httpClient.get<Sessao>(this.apiUrl + "/sessao/" + idUsuario);
+    }
+    
+    public logoff(): Observable<Sessao>{
+        return this.httpClient.delete<Sessao>(this.apiUrl + "/sessao/encerra");
     }
 }

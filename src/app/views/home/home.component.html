@@ -1,4 +1,8 @@
 <div class="row justify-content-center align-items-center">
+    <div class="row justify-content-center align-items-center" style="width: 100%">
+        <small style="margin-left: 150px">{{nomeUsuarioLogado}} |</small>
+        <a [routerLink]="['']" (click)="logoff()" style="font-size: 12px; margin-left: 5px">Logoff</a>
+    </div>
     <mat-card class="default-card" style="width: 500px">
         <mat-card-header>
             <mat-card-title>Ranking<i class="fa fa-line-chart" style="margin-left: 10px"></i></mat-card-title>

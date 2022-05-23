@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
 import { LoginForm } from 'src/app/shared/forms/login.form';
 import { UsuarioService } from 'src/app/shared/services/usuario.service';
+import { HomeComponent } from '../home/home.component';
 
 @Component({
     selector: 'app-login',
@@ -30,6 +31,8 @@ export class LoginComponent implements OnInit {
         this.loginForm = this.loginFormGroup.getRawValue();
         this.usuarioService.loginUsuario(this.loginForm).subscribe( data =>{
             if(data != null){
+                localStorage.setItem('idUsuarioLogado', data.id.toString());
+                localStorage.setItem('nomeUsuarioLogado', data.nomeUsuario);
                 this.router.navigate(['home']);
             }
         }, err =>{
