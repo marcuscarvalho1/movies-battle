@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UsuarioForm } from 'src/app/shared/forms/usuario.form';
 import { UsuarioService } from 'src/app/shared/services/usuario.service';
 
@@ -10,12 +11,13 @@ import { UsuarioService } from 'src/app/shared/services/usuario.service';
 })
 export class CriarUsuarioComponent implements OnInit {
 
-    criarUsuarioFormGroup: FormGroup = new FormGroup({});
+    criarUsuarioFormGroup!: FormGroup;
     criarUsuarioForm!: UsuarioForm;
     
     constructor(
         private formBuilder: FormBuilder,
-        private usuarioService: UsuarioService
+        private usuarioService: UsuarioService,
+        private router: Router
     ) { }
 
     ngOnInit(): void {
@@ -26,9 +28,11 @@ export class CriarUsuarioComponent implements OnInit {
         this.criarUsuarioForm = this.criarUsuarioFormGroup.getRawValue();
         this.usuarioService.criaNovousuario(this.criarUsuarioForm).subscribe(data => {
             if(data != null){
-                alert('Usuário criado com sucesso!')
-                
+                alert('Usuário ' + data.nomeUsuario + ' criado com sucesso!')
+                this.router.navigate(['']);
             }
+        }, err =>{
+            alert("A API retornou um erro: " + err.message);
         });
     }
 

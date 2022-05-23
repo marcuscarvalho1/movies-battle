@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Usuario } from './shared/models/usuario.model';
 
 @Component({
     selector: 'app-root',
@@ -6,8 +7,4 @@ import { Component } from '@angular/core';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-    title = 'Movies-Battle';
-    description = 'Quiz de conhecimentos em filmes'
-    
-    url = 'https://m.media-amazon.com/images/M/MV5BMTE5OTE4OTE2Nl5BMl5BanBnXkFtZTYwMDkzMTQ3._V1_SX300.jpg';
 }

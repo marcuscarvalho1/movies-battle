@@ -1,1 +1,32 @@
-<p>home works!</p>
+<div class="row justify-content-center align-items-center">
+    <mat-card class="default-card" style="width: 500px">
+        <mat-card-header>
+            <mat-card-title>Ranking<i class="fa fa-line-chart" style="margin-left: 10px"></i></mat-card-title>
+            <mat-card-subtitle style="margin-top: 5px">Cada acerto rende 1 ponto. 3 erros e o jogo acaba.</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <table mat-table [dataSource]="rankingGeral" class="mat-elevation-z8" style="width: 100%" >
+                <!-- Coluna da posição -->
+                <ng-container matColumnDef="posicao">
+                    <th mat-header-cell *matHeaderCellDef>Posição #</th>
+                    <td mat-cell *matCellDef="let ranking">{{ranking.posicao}}</td>
+                </ng-container>
+                
+                <!-- Coluna do usuário -->
+                <ng-container matColumnDef="nome">
+                    <th mat-header-cell *matHeaderCellDef>Jogador</th>
+                    <td mat-cell *matCellDef="let ranking">{{ranking.usuario.nomeUsuario}}</td>
+                </ng-container>
+                
+                <!-- Coluna dos pontos -->
+                <ng-container matColumnDef="pontos">
+                    <th mat-header-cell *matHeaderCellDef>Pontos</th>
+                    <td mat-cell *matCellDef="let ranking">{{ranking.pontos}}</td>
+                </ng-container>
+                
+                <tr mat-header-row *matHeaderRowDef="colunasMostradas"></tr>
+                <tr mat-row *matRowDef="let row; columns: colunasMostradas;"></tr>
+            </table>
+        </mat-card-content>
+    </mat-card>
+</div>

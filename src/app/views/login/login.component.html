@@ -1,0 +1,28 @@
+<div class="row justify-content-center align-items-center">
+    <img class="img-thumbnail" src="{{fotoPrincipalUrl}}" style="width: 400px; margin-right: 100px; border-radius: 15px" >
+    <mat-card class="default-card">
+        <mat-card-header>
+            <mat-card-title>Login</mat-card-title>
+            <mat-card-subtitle>Entre com seus dados de login:</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <form [formGroup]="loginFormGroup" class="form mt-4">
+                <div class="form-group">
+                    <input class="form-control" placeholder="Nome de usuário" formControlName="nomeUsuario" autofocus>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="senha" placeholder="Senha" formControlName="senha" required>
+                </div>
+                <div class="form-group">
+                    <button mat-raised-button color="primary" type="submit"
+                            (click)="login()">
+                        Logar
+                    </button>
+                </div>
+                <div class="form-group">
+                    <a [routerLink]="['/criar-usuario']">Criar novo usuário</a>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>
