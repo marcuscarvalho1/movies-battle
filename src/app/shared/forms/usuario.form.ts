@@ -1,6 +1,6 @@
 import { Validators } from "@angular/forms";
 
 export class UsuarioForm{
-    nomeUsuario: any = ['', Validators.required];
-    senha: any = ['', Validators.required];
+    nomeUsuario: any = ['', [Validators.required, Validators.minLength(4)]];
+    senha: any = ['', [Validators.required, Validators.minLength(6)]];
 }

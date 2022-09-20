@@ -8,12 +8,14 @@
             <form [formGroup]="criarUsuarioFormGroup" class="form mt-4">
                 <div class="form-group">
                     <input class="form-control" placeholder="Nome de usuário" formControlName="nomeUsuario" autofocus>
-                    <small *ngIf="!!criarUsuarioFormGroup.get('nomeUsuario')?.errors?.['required']"
+                    <small *ngIf="!!criarUsuarioFormGroup.get('nomeUsuario')?.errors?.['required'] 
+                                  && !!criarUsuarioFormGroup.get('nomeUsuario')?.touched"
                            class="text-danger d-block mt-2" style="margin-left: 13px">Nome de usuário é obrigatório</small>
                 </div>
                 <div class="form-group">
                     <input type="password" class="form-control" id="senha" placeholder="Senha" formControlName="senha" required>
-                    <small *ngIf="!!criarUsuarioFormGroup.get('senha')?.errors?.['required']" 
+                    <small *ngIf="!!criarUsuarioFormGroup.get('senha')?.errors?.['required']
+                                  && !!criarUsuarioFormGroup.get('senha')?.touched" 
                            class="text-danger d-block mt-2" style="margin-left: 13px">Senha é obrigatório</small>
                 </div>
                 <div class="form-group">
