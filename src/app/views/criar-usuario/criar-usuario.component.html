@@ -8,15 +8,24 @@
             <form [formGroup]="criarUsuarioFormGroup" class="form mt-4">
                 <div class="form-group">
                     <input class="form-control" placeholder="Nome de usuário" formControlName="nomeUsuario" autofocus>
-                    <small *ngIf="!!criarUsuarioFormGroup.get('nomeUsuario')?.errors?.['required'] 
-                                  && !!criarUsuarioFormGroup.get('nomeUsuario')?.touched"
+                    <small *ngIf="criarUsuarioFormGroup.get('nomeUsuario')?.errors?.['required'] 
+                                  && criarUsuarioFormGroup.get('nomeUsuario')?.touched"
                            class="text-danger d-block mt-2" style="margin-left: 13px">Nome de usuário é obrigatório</small>
+                    <small *ngIf="criarUsuarioFormGroup.get('nomeUsuario')?.errors?.['minlength'] 
+                                  && criarUsuarioFormGroup.get('nomeUsuario')?.touched"
+                           class="text-danger d-block mt-2" style="margin-left: 13px">Usuário deve ter no mínimo 4 caracteres!</small>
                 </div>
                 <div class="form-group">
                     <input type="password" class="form-control" id="senha" placeholder="Senha" formControlName="senha" required>
-                    <small *ngIf="!!criarUsuarioFormGroup.get('senha')?.errors?.['required']
-                                  && !!criarUsuarioFormGroup.get('senha')?.touched" 
+                    <small *ngIf="criarUsuarioFormGroup.get('senha')?.errors?.['required']
+                                  && criarUsuarioFormGroup.get('senha')?.touched" 
                            class="text-danger d-block mt-2" style="margin-left: 13px">Senha é obrigatório</small>
+                    <small *ngIf="criarUsuarioFormGroup.get('senha')?.errors?.['minlength']
+                                  && criarUsuarioFormGroup.get('senha')?.touched" 
+                           class="text-danger d-block mt-2" style="margin-left: 13px">Senha deve ter no mínimo 6 caracteres!</small>
+                    <small *ngIf="criarUsuarioFormGroup.get('senha')?.errors?.['senhaFacilDeducao']
+                                  && criarUsuarioFormGroup.get('senha')?.touched" 
+                           class="text-danger d-block mt-2" style="margin-left: 13px">Senha de fácil dedução!</small>
                 </div>
                 <div class="form-group">
                     <button mat-raised-button color="primary" [disabled]="criarUsuarioFormGroup.invalid" type="submit"
