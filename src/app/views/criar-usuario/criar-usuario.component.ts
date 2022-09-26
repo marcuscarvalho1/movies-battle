@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsuarioForm } from 'src/app/shared/forms/usuario.form';
 import { UsuarioService } from 'src/app/shared/services/usuario.service';
+import { usuarioSenhaIguaisValidator } from './usuario-senha-iguais.validator';
 
 @Component({
   selector: 'app-criar-usuario',
@@ -21,7 +22,8 @@ export class CriarUsuarioComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        this.criarUsuarioFormGroup = this.formBuilder.group(new UsuarioForm)
+        this.criarUsuarioFormGroup = this.formBuilder.group(new UsuarioForm(), 
+            {validators: [usuarioSenhaIguaisValidator]})
     }
     
     criaUsuario(){
@@ -35,5 +37,5 @@ export class CriarUsuarioComponent implements OnInit {
             alert("A API retornou um erro: " + err.message);
         });
     }
-
+    
 }
